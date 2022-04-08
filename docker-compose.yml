@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  rails:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+      args:
+        RUBY_VERSION: 3.1
+    tmpfs:
+      - /tmp
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/sleep_tracker:cached
+      - rails_cache:/sleep_tracker/tmp/cache
+      - bundle:/usr/local/bundle
+    environment:
+      BOOTSNAP_CACHE_DIR: /usr/local/bundle/_bootsnap
+      WEB_CONCURRENCY: 2
+      EDITOR: vi
+      TZ: Asia/Tokyo
+    depends_on:
+      - mysql
+    ports:
+      - 3000:3000
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+      args:
+        MYSQL_VERSION: 8.0.28
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Tokyo
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/mysql/data:/data
+    ports:
+      - 33061:3306
+
+volumes:
+  mysql:
+  bundle:
+  rails_cache:
