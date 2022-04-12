@@ -1,0 +1,11 @@
+json = {}
+
+json[:sleeps] = @sleeps.map do |sleep|
+  ended_at = sleep.duration ? sleep.created_at + sleep.duration.seconds : nil
+  {id: sleep.id, created_at: sleep.created_at, ended_at: ended_at}
+end
+
+json[:total_pages] = @sleeps.total_pages
+json[:total_count] = @sleeps.total_count
+
+json
