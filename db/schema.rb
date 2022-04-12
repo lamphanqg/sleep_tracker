@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_134233) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_12_122353) do
+  create_table "friendships", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
+    t.bigint "follower_id", null: false
+    t.bigint "following_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
+    t.index ["following_id"], name: "index_friendships_on_following_id"
+  end
+
   create_table "sleeps", charset: "utf8mb4", collation: "utf8mb4_bin", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "duration"
@@ -27,5 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_134233) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "friendships", "users", column: "follower_id"
+  add_foreign_key "friendships", "users", column: "following_id"
   add_foreign_key "sleeps", "users"
 end
