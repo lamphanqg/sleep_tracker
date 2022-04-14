@@ -20,6 +20,11 @@ RSpec.describe User, type: :model do
       expect(second_user.followers).to include(user)
     end
 
+    it "cannot follow twice" do
+      user.follow(second_user)
+      expect(user.followings.where(id: second_user.id).count).to eq(1)
+    end
+
     it "sets the other user as a following" do
       expect(user.followings).to include(second_user)
     end
