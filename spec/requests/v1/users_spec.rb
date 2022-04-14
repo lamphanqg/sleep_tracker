@@ -1,10 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "/v1/users", type: :request do
-  describe "follow" do
-    let(:user) { User.create!(name: "Test user") }
-    let(:another_user) { User.create!(name: "Another user") }
+  let(:user) { User.create!(name: "Test user") }
+  let(:another_user) { User.create!(name: "Another user") }
 
+  describe "follow" do
     it "returns ok" do
       post "/v1/users/#{user.id}/follow", params: {following_id: another_user.id}
       expect(response).to have_http_status(:ok)
@@ -44,6 +44,23 @@ RSpec.describe "/v1/users", type: :request do
         json = JSON.parse(response.body)
         expect(json["message"]).to eq("following user not found")
       end
+    end
+  end
+
+  describe "unfollow" do
+    before do
+      user.follow(another_user)
+    end
+
+    it "returns ok" do
+      delete "/v1/users/#{user.id}/unfollow", params: {following_id: another_user.id}
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "decrease user's followings" do
+      followings_count = user.followings.count
+      delete "/v1/users/#{user.id}/unfollow", params: {following_id: another_user.id}
+      expect(user.followings.count).to eq(followings_count - 1)
     end
   end
 end

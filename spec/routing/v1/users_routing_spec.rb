@@ -8,5 +8,12 @@ RSpec.describe V1::UsersController, type: :routing do
         id: "12", format: "json"
       )
     end
+
+    it "routes to #unfollow" do
+      expect(delete: "/v1/users/12/unfollow").to route_to(
+        controller: "v1/users", action: "unfollow",
+        id: "12", format: "json"
+      )
+    end
   end
 end

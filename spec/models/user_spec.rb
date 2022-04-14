@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   let(:user) { described_class.create!(name: "Test user") }
   let(:second_user) { described_class.create!(name: "Second user") }
+  let(:third_user) { described_class.create!(name: "Third user") }
 
   it "deletes associated sleeps when deleted" do
     sleeps_count = Sleep.count
@@ -41,4 +42,29 @@ RSpec.describe User, type: :model do
       expect(second_user.follower_friendships.count).to eq(friendships_count - 1)
     end
   end
+
+  describe "unfollows a user" do
+    before do
+      user.follow(second_user)
+      user.follow(third_user)
+      user.unfollow(second_user)
+    end
+
+    it "removes that user from user's followings" do
+      expect(user.followings).not_to include(second_user)
+    end
+
+    it "does not removes other followings" do
+      expect(user.followings).to include(third_user)
+    end
+
+    it "does not delete second user" do
+      expect(User.find(second_user.id)).to be_truthy
+    end
+
+    it "removes follower from second user" do
+      expect(second_user.followers).not_to include(user)
+    end
+  end
+
 end

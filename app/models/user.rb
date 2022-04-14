@@ -13,4 +13,8 @@ class User < ApplicationRecord
     return if followings.where(id: another_user.id).exists?
     followings << another_user
   end
+
+  def unfollow(another_user)
+    followings.delete(another_user)
+  end
 end

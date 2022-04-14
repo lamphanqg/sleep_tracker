@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users, shallow: true do
       member do
         post "follow"
+        delete "unfollow"
       end
 
       resources :sleeps do
