@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :followings, through: :following_friendships
 
   def follow(another_user)
-    return if followings.where(id: another_user.id).exists?
+    return if followings.exists?(id: another_user.id)
     followings << another_user
   end
 

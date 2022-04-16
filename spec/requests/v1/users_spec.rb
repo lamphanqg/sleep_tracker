@@ -16,7 +16,7 @@ RSpec.describe "/v1/users", type: :request do
       expect(user.followings.count).to eq(followings_count + 1)
     end
 
-    context "when user is inexistent" do
+    context "when user not exists" do
       before do
         post "/v1/users/100/follow", params: {following_id: another_user.id}
       end
@@ -31,7 +31,7 @@ RSpec.describe "/v1/users", type: :request do
       end
     end
 
-    context "when following user is inexistent" do
+    context "when following user not exists" do
       before do
         post "/v1/users/#{user.id}/follow", params: {following_id: 5}
       end

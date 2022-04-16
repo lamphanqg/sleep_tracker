@@ -59,12 +59,11 @@ RSpec.describe User, type: :model do
     end
 
     it "does not delete second user" do
-      expect(User.find(second_user.id)).to be_truthy
+      expect(described_class.find(second_user.id)).to be_truthy
     end
 
     it "removes follower from second user" do
       expect(second_user.followers).not_to include(user)
     end
   end
-
 end

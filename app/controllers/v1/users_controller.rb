@@ -16,17 +16,17 @@ class V1::UsersController < ApplicationController
 
   def set_user
     @user = User.find_by(id: params[:id])
-    if @user.nil?
+    return if @user.present?
+
       res = {message: "user not found"}
-      return render json: res, status: :not_found
-    end
+    render json: res, status: :not_found
   end
 
   def set_following_user
     @following_user = User.find_by(id: params[:following_id])
-    if @following_user.nil?
+    return if @following_user.present?
+
       res = {message: "following user not found"}
-      return render json: res, status: :not_found
-    end
+    render json: res, status: :not_found
   end
 end
