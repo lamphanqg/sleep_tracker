@@ -13,7 +13,8 @@ class V1::UsersController < ApplicationController
   end
 
   def friends
-    @friends = User.friends_of(@user)
+    @friends = User.friends_of(@user).order(:id)
+      .page(params[:page]).per(params[:per_page])
   end
 
   private

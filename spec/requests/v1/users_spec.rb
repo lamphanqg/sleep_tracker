@@ -106,4 +106,39 @@ RSpec.describe "/v1/users", type: :request do
       end
     end
   end
+
+  describe "pagination for friend list" do
+    let(:json) { JSON.parse(response.body) }
+
+    before do
+      30.times do |i|
+        new_user = User.create!(name: "User #{i}")
+        user.follow(new_user)
+      end
+    end
+
+    it "returns 25 friends when no parameter specified" do
+      get "/v1/users/#{user.id}/friends"
+      expect(json["friends"].count).to eq(25)
+    end
+
+    context "when specify 2nd page and 10 per page" do
+      before do
+        get "/v1/users/#{user.id}/friends", params: {page: 2, per_page: 10}
+      end
+
+      it "returns 11th-20th friends when specify 2nd page and 10 per page" do
+        friend_ids = User.friends_of(user).order(:id).offset(10).limit(10).pluck(:id)
+        expect(json["friends"].map { |friend| friend["id"] }).to eq(friend_ids)
+      end
+
+      it "returns total count" do
+        expect(json["total_count"]).to eq(30)
+      end
+
+      it "return total page" do
+        expect(json["total_pages"]).to eq(3)
+      end
+    end
+  end
 end

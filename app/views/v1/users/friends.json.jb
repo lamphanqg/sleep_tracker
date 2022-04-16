@@ -6,4 +6,7 @@ json[:friends] = @friends.map do |friend|
   friend_hash
 end
 
+json[:total_pages] = @friends.total_pages
+json[:total_count] = @friends.total_count
+
 json
