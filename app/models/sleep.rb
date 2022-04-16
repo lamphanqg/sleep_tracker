@@ -6,6 +6,7 @@ class Sleep < ApplicationRecord
   before_validation :set_duration, if: :ended_at?
 
   scope :finished, -> { where.not(duration: nil) }
+  scope :within_a_week, -> { where(created_at: 1.week.ago..) }
 
   validates :duration, numericality: {greater_than_or_equal_to: 0}, allow_nil: true
 

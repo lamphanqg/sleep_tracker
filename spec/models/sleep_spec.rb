@@ -29,4 +29,23 @@ RSpec.describe Sleep, type: :model do
       expect(described_class.finished).to include(finished_sleep)
     end
   end
+
+  describe "search sleeps within a week" do
+    subject(:filtered_sleeps) { user.sleeps.within_a_week }
+
+    before do
+      user.sleeps.destroy_all
+      7.times do |i|
+        user.sleeps.create!(created_at: (i + 1).day.ago - 2.seconds)
+      end
+    end
+
+    it "returns sleeps within a week" do
+      expect(filtered_sleeps.count).to eq(6)
+    end
+
+    it "does not return sleeps before a week ago" do
+      expect(filtered_sleeps.select { |sleep| sleep.created_at < 1.week.ago }).to be_empty
+    end
+  end
 end

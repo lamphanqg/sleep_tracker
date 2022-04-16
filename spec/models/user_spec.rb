@@ -66,4 +66,15 @@ RSpec.describe User, type: :model do
       expect(second_user.followers).not_to include(user)
     end
   end
+
+  describe "search friends of a user" do
+    before do
+      user.follow(second_user)
+      third_user.follow(user)
+    end
+
+    it "returns followers and followings" do
+      expect(described_class.friends_of(user)).to include(second_user, third_user)
+    end
+  end
 end

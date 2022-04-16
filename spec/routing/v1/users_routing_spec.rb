@@ -15,5 +15,12 @@ RSpec.describe V1::UsersController, type: :routing do
         id: "12", format: "json"
       )
     end
+
+    it "routes to #friends" do
+      expect(get: "/v1/users/12/friends").to route_to(
+        controller: "v1/users", action: "friends",
+        id: "12", format: "json"
+      )
+    end
   end
 end

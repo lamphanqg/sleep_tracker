@@ -1,0 +1,9 @@
+json = {}
+
+json[:friends] = @friends.map do |friend|
+  friend_hash = friend.attributes.symbolize_keys
+  friend_hash[:sleeps] = friend.sleeps.within_a_week.order(created_at: :desc)
+  friend_hash
+end
+
+json

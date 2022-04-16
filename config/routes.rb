@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       member do
         post "follow"
         delete "unfollow"
+        get "friends"
       end
 
       resources :sleeps do

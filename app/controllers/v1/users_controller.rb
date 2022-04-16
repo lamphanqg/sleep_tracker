@@ -1,5 +1,5 @@
 class V1::UsersController < ApplicationController
-  before_action :set_user, only: [:follow, :unfollow]
+  before_action :set_user, only: [:follow, :unfollow, :friends]
   before_action :set_following_user, only: [:follow, :unfollow]
 
   def follow
@@ -12,13 +12,17 @@ class V1::UsersController < ApplicationController
     head :ok
   end
 
+  def friends
+    @friends = User.friends_of(@user)
+  end
+
   private
 
   def set_user
     @user = User.find_by(id: params[:id])
     return if @user.present?
 
-      res = {message: "user not found"}
+    res = {message: "user not found"}
     render json: res, status: :not_found
   end
 
@@ -26,7 +30,7 @@ class V1::UsersController < ApplicationController
     @following_user = User.find_by(id: params[:following_id])
     return if @following_user.present?
 
-      res = {message: "following user not found"}
+    res = {message: "following user not found"}
     render json: res, status: :not_found
   end
 end

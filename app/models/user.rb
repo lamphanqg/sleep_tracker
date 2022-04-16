@@ -9,6 +9,14 @@ class User < ApplicationRecord
     foreign_key: :follower_id, inverse_of: :follower, dependent: :destroy
   has_many :followings, through: :following_friendships
 
+  class << self
+    def friends_of(user)
+      following_ids = user.following_friendships.pluck(:following_id)
+      follower_ids = user.follower_friendships.pluck(:follower_id)
+      where(id: follower_ids + following_ids)
+    end
+  end
+
   def follow(another_user)
     return if followings.exists?(id: another_user.id)
     followings << another_user
