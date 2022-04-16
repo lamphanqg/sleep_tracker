@@ -1,4 +1,5 @@
 require "rails_helper"
+require "requests/shared_examples"
 
 RSpec.describe "/v1/users", type: :request do
   let(:user) { User.create!(name: "Test user") }
@@ -22,14 +23,7 @@ RSpec.describe "/v1/users", type: :request do
         post "/v1/users/100/follow", params: {following_id: another_user.id}
       end
 
-      it "returns not found" do
-        expect(response).to have_http_status(:not_found)
-      end
-
-      it "returns message user not found" do
-        json = JSON.parse(response.body)
-        expect(json["message"]).to eq("user not found")
-      end
+      it_behaves_like "a not found error"
     end
 
     context "when following user not exists" do
@@ -37,14 +31,7 @@ RSpec.describe "/v1/users", type: :request do
         post "/v1/users/#{user.id}/follow", params: {following_id: 5}
       end
 
-      it "returns not found" do
-        expect(response).to have_http_status(:not_found)
-      end
-
-      it "returns message following user not found" do
-        json = JSON.parse(response.body)
-        expect(json["message"]).to eq("following user not found")
-      end
+      it_behaves_like "a not found error"
     end
   end
 
@@ -79,9 +66,7 @@ RSpec.describe "/v1/users", type: :request do
       get "/v1/users/#{user.id}/friends"
     end
 
-    it "returns ok" do
-      expect(response).to have_http_status(:ok)
-    end
+    it_behaves_like "a successful request"
 
     it "returns both followings and followers" do
       friend_ids = json["friends"].map { |friend| friend["id"] }

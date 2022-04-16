@@ -1,4 +1,5 @@
 require "rails_helper"
+require "requests/shared_examples"
 
 RSpec.describe "/v1/sleeps", type: :request do
   let(:user) { User.create!(name: "Test user") }
@@ -17,9 +18,7 @@ RSpec.describe "/v1/sleeps", type: :request do
         post "/v1/users/#{user.id}/sleeps/clock_in", params: {clock_in_time: clock_in_time.iso8601}
       end
 
-      it "returns ok" do
-        expect(response).to have_http_status(:ok)
-      end
+      it_behaves_like "a successful request"
 
       it "creates a new sleep" do
         expect(user.sleeps.count).to eq(sleeps_count + 1)
@@ -45,9 +44,7 @@ RSpec.describe "/v1/sleeps", type: :request do
         post "/v1/users/#{user.id}/sleeps/clock_in", params: {clock_in_time: clock_in_time}
       end
 
-      it "returns ok" do
-        expect(response).to have_http_status(:ok)
-      end
+      it_behaves_like "a successful request"
 
       it "does not create a new sleep" do
         expect(user.sleeps.count).to eq(sleeps_count)
@@ -97,9 +94,7 @@ RSpec.describe "/v1/sleeps", type: :request do
         post "/v1/users/#{user.id}/sleeps/clock_in"
       end
 
-      it "returns bad request" do
-        expect(response).to have_http_status(:bad_request)
-      end
+      it_behaves_like "a bad request error"
     end
 
     context "when cannot parse clock_in_time to Time" do
@@ -107,9 +102,7 @@ RSpec.describe "/v1/sleeps", type: :request do
         post "/v1/users/#{user.id}/sleeps/clock_in", params: {clock_in_time: "abc"}
       end
 
-      it "returns bad request" do
-        expect(response).to have_http_status(:bad_request)
-      end
+      it_behaves_like "a bad request error"
     end
   end
 
@@ -127,9 +120,7 @@ RSpec.describe "/v1/sleeps", type: :request do
         get "/v1/users/#{user.id}/sleeps"
       end
 
-      it "returns ok" do
-        expect(response).to have_http_status(:ok)
-      end
+      it_behaves_like "a successful request"
 
       it "returns first 25 sleeps" do
         json = JSON.parse(response.body)
