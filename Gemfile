@@ -44,9 +44,5 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "rspec-rails"
   gem "bullet"
-end
-
-group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "simplecov", require: false
 end
