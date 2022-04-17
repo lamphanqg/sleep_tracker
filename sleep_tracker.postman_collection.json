@@ -1,0 +1,1327 @@
+{
+	"info": {
+		"_postman_id": "4683fb27-9d60-42db-aea7-18e6cc68e25b",
+		"name": "sleep_tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Follow a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"following_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/v1/users/1/follow",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"1",
+								"follow"
+							]
+						},
+						"description": "Follow a user. Parameter `following_id` is required."
+					},
+					"response": [
+						{
+							"name": "Successfully follow a user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"following_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/1/follow",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1",
+										"follow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "b4866bb5-d53f-4d9c-b732-785003f2e2d9"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.031324"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.247314453125, sql.active_record;dur=17.054443359375, instantiation.active_record;dur=0.064208984375, process_action.action_controller;dur=29.352783203125"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "When follower user not exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"following_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/5/follow",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"5",
+										"follow"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "0a259678-b180-462f-9a6d-dc4f9031a16d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.003619"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.239501953125, sql.active_record;dur=0.871826171875, instantiation.active_record;dur=0.012451171875, process_action.action_controller;dur=1.688232421875"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=5\"\n}"
+						},
+						{
+							"name": "When following user not exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"following_id\": 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/1/follow",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1",
+										"follow"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "64e70bac-ba26-4bfc-9bf6-c0881b15079d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.006318"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.26123046875, sql.active_record;dur=2.23095703125, instantiation.active_record;dur=0.093505859375, process_action.action_controller;dur=3.859375"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=6\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Unfollow user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"following_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/v1/users/1/unfollow",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"1",
+								"unfollow"
+							]
+						},
+						"description": "Unfollow a user. Parameter `following_id` is required."
+					},
+					"response": [
+						{
+							"name": "Successfully unfollow user",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"following_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/1/unfollow",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1",
+										"unfollow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "15265e65-303a-4988-b71d-bb6bd783e049"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.022877"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.220703125, sql.active_record;dur=16.89306640625, instantiation.active_record;dur=0.07177734375, process_action.action_controller;dur=20.88671875"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "When follower user not exist",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"following_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/500/unfollow",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"500",
+										"unfollow"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "12c6b603-2eea-4aff-b018-4fa630ad1571"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.003635"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.26123046875, sql.active_record;dur=0.79443359375, instantiation.active_record;dur=0.01220703125, process_action.action_controller;dur=1.671630859375"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=500\"\n}"
+						},
+						{
+							"name": "When following user not exist",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"following_id\": 700\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/1/unfollow",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1",
+										"unfollow"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "c26c35d9-626a-4fe1-bc40-d41acbf6e2d9"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.006418"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.225341796875, sql.active_record;dur=1.972900390625, instantiation.active_record;dur=0.06689453125, process_action.action_controller;dur=4.4716796875"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=700\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a user's friends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/v1/users/1100/friends?page=3&per_page=5",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"1100",
+								"friends"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "3",
+									"description": "Optional. Default is 1."
+								},
+								{
+									"key": "per_page",
+									"value": "5",
+									"description": "Optional. Default is 25."
+								}
+							]
+						},
+						"description": "Show list of friends of a user, and list of sleeps within 1 week of each friend in descending order of sleep length.\n\nPagination with default 25 friends per page."
+					},
+					"response": [
+						{
+							"name": "Get a user's friends",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/v1/users/1/friends?page=3&per_page=5",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1",
+										"friends"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "3",
+											"description": "Optional. Default is 1."
+										},
+										{
+											"key": "per_page",
+											"value": "5",
+											"description": "Optional. Default is 25."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f707f58930290518b175f2531a2e44b5\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8ee2ecc1-8408-4fc6-9786-1efeda96ba62"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.027849"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.235595703125, sql.active_record;dur=11.190185546875, instantiation.active_record;dur=7.776123046875, !render_template.action_view;dur=4.382080078125, render_template.action_view;dur=4.512939453125, process_action.action_controller;dur=25.866455078125"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"friends\": [\n        {\n            \"id\": 12,\n            \"name\": \"User 8\",\n            \"created_at\": \"2022-04-16T23:47:53+09:00\",\n            \"updated_at\": \"2022-04-16T23:47:53+09:00\",\n            \"sleeps\": [\n                {\n                    \"id\": 5,\n                    \"user_id\": 12,\n                    \"duration\": 28791,\n                    \"created_at\": \"2022-04-16T23:49:45+09:00\",\n                    \"updated_at\": \"2022-04-16T23:49:45+09:00\"\n                },\n                {\n                    \"id\": 3,\n                    \"user_id\": 12,\n                    \"duration\": 15420,\n                    \"created_at\": \"2022-04-13T23:49:45+09:00\",\n                    \"updated_at\": \"2022-04-16T23:49:45+09:00\"\n                },\n                {\n                    \"id\": 4,\n                    \"user_id\": 12,\n                    \"duration\": 2248,\n                    \"created_at\": \"2022-04-10T23:49:45+09:00\",\n                    \"updated_at\": \"2022-04-16T23:49:45+09:00\"\n                }\n            ]\n        },\n        {\n            \"id\": 13,\n            \"name\": \"User 9\",\n            \"created_at\": \"2022-04-16T23:47:53+09:00\",\n            \"updated_at\": \"2022-04-16T23:47:53+09:00\",\n            \"sleeps\": [\n                {\n                    \"id\": 14,\n                    \"user_id\": 13,\n                    \"duration\": 27157,\n                    \"created_at\": \"2022-04-10T23:49:45+09:00\",\n                    \"updated_at\": \"2022-04-16T23:49:45+09:00\"\n                }\n            ]\n        },\n        {\n            \"id\": 14,\n            \"name\": \"User 10\",\n            \"created_at\": \"2022-04-16T23:47:53+09:00\",\n            \"updated_at\": \"2022-04-16T23:47:53+09:00\",\n            \"sleeps\": []\n        },\n        {\n            \"id\": 15,\n            \"name\": \"User 11\",\n            \"created_at\": \"2022-04-16T23:47:53+09:00\",\n            \"updated_at\": \"2022-04-16T23:47:53+09:00\",\n            \"sleeps\": [\n                {\n                    \"id\": 13,\n                    \"user_id\": 15,\n                    \"duration\": 7671,\n                    \"created_at\": \"2022-04-13T23:49:45+09:00\",\n                    \"updated_at\": \"2022-04-16T23:49:45+09:00\"\n                }\n            ]\n        },\n        {\n            \"id\": 16,\n            \"name\": \"User 12\",\n            \"created_at\": \"2022-04-16T23:47:53+09:00\",\n            \"updated_at\": \"2022-04-16T23:47:53+09:00\",\n            \"sleeps\": [\n                {\n                    \"id\": 6,\n                    \"user_id\": 16,\n                    \"duration\": 6787,\n                    \"created_at\": \"2022-04-11T23:49:45+09:00\",\n                    \"updated_at\": \"2022-04-16T23:49:45+09:00\"\n                }\n            ]\n        }\n    ],\n    \"total_pages\": 4,\n    \"total_count\": 17\n}"
+						},
+						{
+							"name": "When user not exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/v1/users/1100/friends?page=3&per_page=5",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1100",
+										"friends"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "3",
+											"description": "Optional. Default is 1."
+										},
+										{
+											"key": "per_page",
+											"value": "5",
+											"description": "Optional. Default is 25."
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "8fb8a0be-6959-46cd-bed6-a2534396ab23"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.006642"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.318359375, sql.active_record;dur=1.35498046875, instantiation.active_record;dur=0.02099609375, process_action.action_controller;dur=3.732177734375"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=1100\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "sleeps",
+			"item": [
+				{
+					"name": "Clock in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"clock_in_time\": \"2022-04-17T18:44:26+09:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/v1/users/1000/sleeps/clock_in",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"1000",
+								"sleeps",
+								"clock_in"
+							]
+						},
+						"description": "Clock in time to a user. Require `clock_in_time` parameter with value is an ISO8601 string containing datetime and timezone.\n\nClock-ins are saved in pair. The first clock-in will create a record with `created_at` is the `clock_in_time` recevied, and `duration` null. The second clock-in will update the `duration` by calculating seconds between the new `clock_in_time` and the record's `created_at`."
+					},
+					"response": [
+						{
+							"name": "Clock in when sleep",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"clock_in_time\": \"2022-04-17T08:44:26+09:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/2/sleeps/clock_in",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"2",
+										"sleeps",
+										"clock_in"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5c529efa3a5ac95fe919a11714113410\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d4679343-6497-440e-b485-885927fe6a4d"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.217349"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "sql.active_record;dur=37.06396484375, start_processing.action_controller;dur=0.199462890625, instantiation.active_record;dur=6.744140625, process_action.action_controller;dur=46.10107421875"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 15,\n    \"user_id\": 2,\n    \"duration\": null,\n    \"created_at\": \"2022-04-17T08:44:26+09:00\",\n    \"updated_at\": \"2022-04-17T08:44:53+09:00\"\n}"
+						},
+						{
+							"name": "Clock in when wake up",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"clock_in_time\": \"2022-04-17T18:44:26+09:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/2/sleeps/clock_in",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"2",
+										"sleeps",
+										"clock_in"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f30b5c7bdd9686329657d1aa1df889a9\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "92d15b7e-02f8-4704-97c1-6da89d91de52"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.143557"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "sql.active_record;dur=28.300048828125, start_processing.action_controller;dur=0.171875, instantiation.active_record;dur=4.75048828125, process_action.action_controller;dur=39.777099609375"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user_id\": 2,\n    \"duration\": 36000,\n    \"id\": 15,\n    \"created_at\": \"2022-04-17T08:44:26+09:00\",\n    \"updated_at\": \"2022-04-17T08:45:40+09:00\"\n}"
+						},
+						{
+							"name": "When user not exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"clock_in_time\": \"2022-04-17T18:44:26+09:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/1000/sleeps/clock_in",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1000",
+										"sleeps",
+										"clock_in"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "6fbcd7dc-79de-4fbe-9f33-d4be252f3c36"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.004303"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.19091796875, sql.active_record;dur=0.78564453125, instantiation.active_record;dur=0.018310546875, process_action.action_controller;dur=1.789794921875"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=1000\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a user's sleeps",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/v1/users/1/sleeps?page=2&per_page=2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"1",
+								"sleeps"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"description": "Optional. Default is 1."
+								},
+								{
+									"key": "per_page",
+									"value": "2",
+									"description": "Optional. Default is 25."
+								}
+							]
+						},
+						"description": "Get a user's sleeps ordered by created_at desc. `created_at` and `ended_at` values are ISO8601 strings with JST timezone."
+					},
+					"response": [
+						{
+							"name": "Get a user's sleeps",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/1/sleeps?per_page=2&page=2",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"1",
+										"sleeps"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "2",
+											"description": "Optional. Default is 25."
+										},
+										{
+											"key": "page",
+											"value": "2",
+											"description": "Optional. Default is 1."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6ad8df80ae5d4af7e8666e58967d1985\""
+								},
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "dac622fa-75e3-43fb-a878-13029ea13cda"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.032173"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.33837890625, sql.active_record;dur=6.17578125, instantiation.active_record;dur=0.188232421875, !compile_template.action_view;dur=0.45068359375, !render_template.action_view;dur=9.628662109375, render_template.action_view;dur=10.258056640625, process_action.action_controller;dur=21.088623046875"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"sleeps\": [\n        {\n            \"id\": 8,\n            \"created_at\": \"2022-04-13T23:49:45+09:00\",\n            \"ended_at\": \"2022-04-14T05:44:51+09:00\"\n        },\n        {\n            \"id\": 2,\n            \"created_at\": \"2022-04-11T21:54:26+09:00\",\n            \"ended_at\": \"2022-04-11T21:55:26+09:00\"\n        }\n    ],\n    \"total_pages\": 3,\n    \"total_count\": 5\n}"
+						},
+						{
+							"name": "When user not exists",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/v1/users/500/sleeps",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users",
+										"500",
+										"sleeps"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "e32c8cc3-3466-4df2-907b-b1a54861a716"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.003433"
+								},
+								{
+									"key": "Server-Timing",
+									"value": "start_processing.action_controller;dur=0.179931640625, sql.active_record;dur=0.733154296875, instantiation.active_record;dur=0.013427734375, process_action.action_controller;dur=1.597900390625"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Couldn't find User with 'id'=500\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
